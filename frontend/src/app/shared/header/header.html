@@ -1,0 +1,65 @@
+<header class="sticky top-0 z-40 border-b border-(--color-rule) bg-(--color-surface)/95 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3.5">
+    <a routerLink="/" class="font-(family-name:--font-display) text-2xl font-extrabold tracking-tight text-(--color-ink)" (click)="closeMenu()">
+      ZBIF
+    </a>
+
+    <nav class="hidden items-center gap-6 font-(family-name:--font-display) text-sm font-bold md:flex">
+      <a routerLink="/about" routerLinkActive="text-(--color-teal)" class="text-(--color-ink)/80 hover:text-(--color-teal)"
+        >How it works</a
+      >
+      <a routerLink="/sub-themes" routerLinkActive="text-(--color-teal)" class="text-(--color-ink)/80 hover:text-(--color-teal)"
+        >Sub-themes</a
+      >
+      <a routerLink="/sponsorship" routerLinkActive="text-(--color-teal)" class="text-(--color-ink)/80 hover:text-(--color-teal)"
+        >Sponsorship</a
+      >
+      @if (authService.isAuthenticated()) {
+        <a routerLink="/account" routerLinkActive="text-(--color-teal)" class="text-(--color-ink)/80 hover:text-(--color-teal)"
+          >My account</a
+        >
+      } @else {
+        <a routerLink="/login" routerLinkActive="text-(--color-teal)" class="text-(--color-ink)/80 hover:text-(--color-teal)"
+          >Sign in</a
+        >
+      }
+      <a
+        routerLink="/register"
+        class="rounded-full bg-(--color-brass) px-4 py-2 text-white transition hover:opacity-90"
+        >Get started &rarr;</a
+      >
+    </nav>
+
+    <button
+      type="button"
+      class="grid h-9 w-9 place-items-center rounded-md border border-(--color-rule) md:hidden"
+      aria-label="Toggle menu"
+      [attr.aria-expanded]="menuOpen()"
+      (click)="toggleMenu()"
+    >
+      <span class="font-(family-name:--font-mono) text-lg leading-none">{{ menuOpen() ? '✕' : '☰' }}</span>
+    </button>
+  </div>
+
+  @if (menuOpen()) {
+    <nav class="flex flex-col gap-1 border-t border-(--color-rule) px-5 py-3 font-(family-name:--font-display) text-sm font-medium md:hidden">
+      <a routerLink="/about" class="rounded px-2 py-2 hover:bg-(--color-surface-sunk)" (click)="closeMenu()">How it works</a>
+      <a routerLink="/sub-themes" class="rounded px-2 py-2 hover:bg-(--color-surface-sunk)" (click)="closeMenu()"
+        >Sub-themes</a
+      >
+      <a routerLink="/sponsorship" class="rounded px-2 py-2 hover:bg-(--color-surface-sunk)" (click)="closeMenu()"
+        >Sponsorship</a
+      >
+      @if (authService.isAuthenticated()) {
+        <a routerLink="/account" class="rounded px-2 py-2 hover:bg-(--color-surface-sunk)" (click)="closeMenu()"
+          >My account</a
+        >
+      } @else {
+        <a routerLink="/login" class="rounded px-2 py-2 hover:bg-(--color-surface-sunk)" (click)="closeMenu()"
+          >Sign in</a
+        >
+      }
+      <a routerLink="/register" class="rounded px-2 py-2 font-bold text-(--color-brass)" (click)="closeMenu()">Get started &rarr;</a>
+    </nav>
+  }
+</header>

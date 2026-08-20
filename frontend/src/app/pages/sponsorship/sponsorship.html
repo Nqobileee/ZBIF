@@ -1,0 +1,60 @@
+<header class="border-b border-(--color-rule) bg-(--color-surface)">
+  <div class="mx-auto max-w-6xl px-5 py-16">
+    <p class="font-(family-name:--font-mono) text-xs font-semibold uppercase tracking-[0.14em] text-(--color-teal)">
+      Sponsorship
+    </p>
+    <h1 class="mt-4 max-w-2xl text-4xl font-bold tracking-tight text-(--color-ink)">
+      Back the platform connecting Zimbabwean industry to local innovation
+    </h1>
+    <p class="mt-4 max-w-2xl text-(--color-muted)">
+      Indicative packages below. Figures and benefits are still being finalised with the secretariat —
+      reach out to discuss a package suited to your organisation.
+    </p>
+  </div>
+</header>
+
+<section class="mx-auto max-w-6xl px-5 py-14">
+  <div class="overflow-x-auto rounded-md border border-(--color-rule)">
+    <table class="w-full min-w-[560px] border-collapse text-sm">
+      <thead>
+        <tr class="border-b border-(--color-rule) bg-(--color-surface-sunk) text-left">
+          <th class="px-5 py-3 font-(family-name:--font-mono) text-[11px] font-semibold uppercase tracking-[0.1em] text-(--color-muted)">
+            Category
+          </th>
+          <th class="px-5 py-3 font-(family-name:--font-mono) text-[11px] font-semibold uppercase tracking-[0.1em] text-(--color-muted)">
+            Indicative contribution
+          </th>
+          <th class="px-5 py-3 font-(family-name:--font-mono) text-[11px] font-semibold uppercase tracking-[0.1em] text-(--color-muted)">
+            Benefits
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (tier of tiers; track tier.name) {
+          <tr class="border-b border-(--color-rule) last:border-0 odd:bg-(--color-surface) even:bg-(--color-surface-sunk)/40">
+            <td class="px-5 py-4 font-(family-name:--font-display) font-semibold text-(--color-ink)">{{ tier.name }}</td>
+            <td class="px-5 py-4 font-(family-name:--font-mono) tabular-nums text-(--color-ink)">{{ tier.contribution }}</td>
+            <td class="px-5 py-4 text-(--color-muted)">{{ tier.benefits }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mt-10 rounded-md border border-(--color-rule) bg-(--color-surface-sunk) p-6">
+    <h2 class="font-bold text-(--color-ink)">What sponsorship supports</h2>
+    <p class="mt-2 max-w-2xl text-sm text-(--color-muted)">
+      Sponsorship funds the challenge-collection campaign, innovation development support, the Deal
+      Rooms, and the two-day forum itself — turning local problems into local solutions, and local
+      solutions into commercial outcomes.
+    </p>
+  </div>
+
+  <div class="mt-8 flex flex-wrap gap-3">
+    <a
+      routerLink="/register"
+      class="rounded-full bg-(--color-teal) px-6 py-3 text-sm font-semibold text-(--color-surface) transition hover:opacity-90"
+      >Register interest as a sponsor</a
+    >
+  </div>
+</section>

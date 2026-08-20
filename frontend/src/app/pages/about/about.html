@@ -1,0 +1,99 @@
+<header class="border-b border-(--color-rule) bg-(--color-surface)">
+  <div class="mx-auto max-w-3xl px-5 py-16">
+    <p class="font-(family-name:--font-mono) text-xs font-semibold uppercase tracking-[0.14em] text-(--color-teal)">
+      About the forum
+    </p>
+    <h1 class="mt-4 text-4xl font-bold tracking-tight text-(--color-ink)">
+      A national platform, not another conference
+    </h1>
+  </div>
+</header>
+
+<article class="mx-auto max-w-3xl px-5 py-14">
+  <section>
+    <h2 class="text-xl font-bold text-(--color-ink)">Executive summary</h2>
+    <p class="mt-4 leading-relaxed text-(--color-ink)/90">
+      Zimbabwe stands at a critical point where economic transformation, industrial competitiveness, and
+      innovation must converge to unlock sustainable growth. Across industries, businesses face
+      operational inefficiencies, rising costs, technological disruption, supply-chain challenges, and
+      increasing pressure to modernise. At the same time, Zimbabwe possesses a growing pool of talented
+      innovators, startups, researchers, universities, and technology developers whose ideas often
+      remain disconnected from real market opportunities.
+    </p>
+    <p class="mt-4 leading-relaxed text-(--color-ink)/90">
+      The Zimbabwe Business Innovation Forum (ZBIF) bridges that gap. Unlike conventional conferences
+      focused mainly on discussion, ZBIF is a solution-driven marketplace: industry challenges are
+      sourced before the event and assigned to innovators, universities, startups and research
+      institutions to solve. At the forum, innovators present commercially viable solutions directly to
+      industry leaders, investors and policymakers.
+    </p>
+    <p class="mt-4 leading-relaxed text-(--color-ink)/90">
+      Success is measured not by attendance, but by innovations adopted, partnerships formed, pilot
+      projects initiated, commercial agreements signed, and investment unlocked.
+    </p>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-xl font-bold text-(--color-ink)">Why now</h2>
+    <p class="mt-4 leading-relaxed text-(--color-ink)/90">
+      Zimbabwean industries operate in an increasingly competitive, technology-driven global economy —
+      manufacturing, agriculture, mining, logistics, healthcare, education, retail and financial
+      services all face pressure to digitise and modernise, but many companies struggle to access
+      affordable, relevant innovation locally.
+    </p>
+    <p class="mt-4 leading-relaxed text-(--color-ink)/90">
+      Meanwhile, universities and innovation hubs keep producing talented graduates, research and
+      startup ideas that rarely become commercially viable enterprises — underused capacity, limited
+      commercialisation, and reduced industrial competitiveness. Zimbabwe has the intellectual capital
+      to solve many of its own industrial challenges. What has been missing is a structured ecosystem
+      that deliberately connects problems to innovators, research to markets, and startups to
+      procurement and investment.
+    </p>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-xl font-bold text-(--color-ink)">Objectives</h2>
+    <div class="mt-5 grid gap-6 sm:grid-cols-2">
+      <div>
+        <h3 class="font-(family-name:--font-mono) text-[11px] font-semibold uppercase tracking-[0.12em] text-(--color-brass)">
+          Strategic
+        </h3>
+        <ul class="mt-3 flex flex-col gap-2 text-sm text-(--color-ink)/90">
+          <li>Strengthen collaboration between industry and academia</li>
+          <li>Promote commercialisation of local innovation</li>
+          <li>Improve industrial competitiveness through technology</li>
+          <li>Position Zimbabwe as a regional innovation ecosystem leader</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-(family-name:--font-mono) text-[11px] font-semibold uppercase tracking-[0.12em] text-(--color-brass)">
+          Operational
+        </h3>
+        <ul class="mt-3 flex flex-col gap-2 text-sm text-(--color-ink)/90">
+          <li>Collect real business challenges across sectors</li>
+          <li>Facilitate solution development by innovators and universities</li>
+          <li>Create direct engagement with industry leaders</li>
+          <li>Support piloting and adoption of local innovation</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-xl font-bold text-(--color-ink)">Target participants</h2>
+    <p class="mt-4 flex flex-wrap gap-2 text-sm">
+      @for (
+        group of [
+          'Corporate executives', 'SMEs', 'Universities', 'Startups', 'Innovation hubs',
+          'Researchers', 'Government ministries', 'Investors', 'Financial institutions',
+          'Development agencies', 'Procurement managers', 'Technology providers', 'Students & young entrepreneurs',
+        ];
+        track group
+      ) {
+        <span class="rounded-full border border-(--color-rule) bg-(--color-surface) px-3 py-1.5 text-(--color-ink)/85">{{
+          group
+        }}</span>
+      }
+    </p>
+  </section>
+</article>

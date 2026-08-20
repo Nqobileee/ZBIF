@@ -1,0 +1,105 @@
+@import 'tailwindcss';
+
+/* Design tokens. Navy + gold, matching the live ZBIF product (Syne display
+   type, Inter body) rather than the earlier teal/brass placeholder palette —
+   token *names* are kept so every page that already references them (About,
+   Sub-themes, Sponsorship, the auth flow) picks up the new values for free. */
+@theme {
+  --color-ground: #faf8f4;
+  --color-surface: #ffffff;
+  --color-surface-sunk: #f1eee5;
+  --color-ink: #131b2e;
+  --color-muted: #5a6478;
+  --color-rule: #e1e4ec;
+  --color-teal: #1e2a4d;
+  --color-teal-soft: #e7eaf3;
+  --color-brass: #ad7f0a;
+  --color-brass-soft: #f5ecd2;
+
+  --font-display: 'Syne', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --color-ground: #0a0e1a;
+    --color-surface: #131a2b;
+    --color-surface-sunk: #1a2338;
+    --color-ink: #edeff5;
+    --color-muted: #97a1b9;
+    --color-rule: #262f4a;
+    --color-teal: #8098e8;
+    --color-teal-soft: #1c2540;
+    --color-brass: #e6b53c;
+    --color-brass-soft: #2e2712;
+  }
+}
+
+:root[data-theme='dark'] {
+  --color-ground: #0a0e1a;
+  --color-surface: #131a2b;
+  --color-surface-sunk: #1a2338;
+  --color-ink: #edeff5;
+  --color-muted: #97a1b9;
+  --color-rule: #262f4a;
+  --color-teal: #8098e8;
+  --color-teal-soft: #1c2540;
+  --color-brass: #e6b53c;
+  --color-brass-soft: #2e2712;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-ground);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-wrap: balance;
+}
+
+a {
+  color: var(--color-teal);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brass);
+  outline-offset: 2px;
+}
+
+/* Frosted glass panel for content sitting over a photo — dark, low-opacity
+   tint + blur, not the pale "light glass" variant, since it's used on top of
+   a darkened image, not a light surface. */
+@layer utilities {
+  .glass-dark {
+    background: rgb(255 255 255 / 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgb(255 255 255 / 0.16);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
