@@ -1,0 +1,67 @@
+openapi: 3.0.3
+info:
+  title: ZBIF InnovaMatch API
+  version: 1.0.0
+  description: JSON endpoints for AI chat and health on the shared-LAMP PHP app.
+servers:
+  - url: /
+paths:
+  /health:
+    get:
+      summary: App health
+      responses:
+        '200':
+          description: OK
+  /api/v1/ai/health:
+    get:
+      summary: LLM provider configuration status
+      responses:
+        '200':
+          description: Provider map
+  /api/v1/ai/chat/start:
+    post:
+      summary: Start Nova session
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                mode:
+                  type: string
+      responses:
+        '200':
+          description: Session created
+  /api/v1/ai/chat/message:
+    post:
+      summary: Send chat message
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required: [session_token, message]
+              properties:
+                session_token: { type: string }
+                message: { type: string }
+      responses:
+        '200':
+          description: Updated transcript
+  /api/v1/ai/ask:
+    post:
+      summary: Grounded FAQ ask
+      responses:
+        '200':
+          description: Answer payload
+  /api/v1/ai/match/{challengeId}/recompute:
+    post:
+      summary: Recompute challenge matches
+      parameters:
+        - in: path
+          name: challengeId
+          required: true
+          schema: { type: integer }
+      responses:
+        '200':
+          description: Match list

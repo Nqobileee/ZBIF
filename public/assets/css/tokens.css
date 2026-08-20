@@ -1,0 +1,53 @@
+/* ZBIF tokens + base. Logo-aligned navy + gold. */
+@font-face{font-family:"Poppins";font-style:normal;font-weight:400;font-display:swap;src:url("../fonts/poppins-400.woff2") format("woff2")}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:500;font-display:swap;src:url("../fonts/poppins-500.woff2") format("woff2")}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:600;font-display:swap;src:url("../fonts/poppins-600.woff2") format("woff2")}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:700;font-display:swap;src:url("../fonts/poppins-700.woff2") format("woff2")}
+
+:root{
+  /* Primary: navy from ZBIF wordmark */
+  --navy-950:#050A14;--navy-900:#0A1220;--navy-800:#0F1C30;--navy-700:#152844;--navy-600:#1C3558;--navy-100:#E8EEF6;--navy-50:#F3F6FA;
+  /* Legacy aliases so existing green-* classes keep working as navy */
+  --green-900:var(--navy-950);--green-800:var(--navy-900);--green-700:var(--navy-800);--green-600:var(--navy-700);--green-500:var(--navy-600);--green-100:var(--navy-100);--green-50:var(--navy-50);
+  --gold-600:#B8941F;--gold-500:#D4AF37;--gold-100:#F7EED0;
+  --color-primary:var(--navy-800);--color-primary-600:var(--navy-700);--color-primary-50:var(--navy-50);
+  --color-accent:var(--gold-500);--color-accent-hover:var(--gold-600);
+  --ink:#0E1520;--muted:#5A6678;--line:rgba(15,28,48,.1);
+  --bg:#FFFFFF;--bg-alt:#F5F7FA;--bg-dark:var(--navy-950);
+  --color-ink:var(--ink);--color-muted:var(--muted);--color-border:var(--line);
+  --color-surface:var(--bg);--color-surface-alt:var(--bg-alt);--color-on-primary:#fff;
+  --color-success:#1E7F51;--color-warning:#C9821F;--color-danger:#B23A3A;--color-info:#2A6F97;
+  --font:"Poppins",system-ui,sans-serif;
+  --text-display:clamp(2.4rem,5vw,4.25rem);--text-h1:clamp(2rem,3.5vw,3rem);--text-h2:clamp(1.5rem,2.5vw,2.25rem);
+  --text-h3:1.35rem;--text-h4:1.15rem;--text-lead:1.125rem;--text-body:1rem;--text-small:.875rem;--text-caption:.75rem;
+  --measure:72ch;
+  --s-1:4px;--s-2:8px;--s-3:12px;--s-4:16px;--s-5:20px;--s-6:24px;--s-7:32px;--s-8:40px;--s-9:48px;--s-10:64px;--s-11:80px;--s-12:96px;--s-13:128px;
+  --section-y:var(--s-12);--container:1160px;--gutter:24px;--reading:760px;
+  --radius-sm:10px;--radius-md:14px;--radius-lg:18px;--radius-xl:22px;--radius-pill:999px;--radius:var(--radius-xl);
+  --shadow-sm:0 1px 2px rgba(10,18,32,.05);--shadow-md:0 8px 28px rgba(10,18,32,.08);--shadow-lg:0 20px 50px rgba(10,18,32,.12);
+  --shadow:var(--shadow-md);
+  --ease:cubic-bezier(.22,1,.36,1);--t-fast:150ms;--t-base:220ms;--t-slow:400ms;--transition:var(--t-base) var(--ease);
+  --z-nav:50;--z-dropdown:60;--z-drawer:70;--z-modal:80;--z-toast:90;--z-chat:95;
+  color-scheme:light;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font);font-size:var(--text-body);line-height:1.65;color:var(--ink);background:var(--bg);min-height:100vh}
+img{max-width:100%;display:block;height:auto}
+a{color:var(--navy-700);text-decoration:none;transition:color var(--t-fast) var(--ease)}
+a:hover{color:var(--gold-600)}
+h1,h2,h3,h4{font-family:var(--font);line-height:1.15;letter-spacing:-.02em;margin:0 0 var(--s-4);color:var(--navy-900)}
+h1{font-size:var(--text-h1);font-weight:700}
+h2{font-size:var(--text-h2);font-weight:600}
+h3{font-size:var(--text-h3);font-weight:600}
+h4{font-size:var(--text-h4);font-weight:600}
+p{margin:0 0 var(--s-4)}
+.muted{color:var(--muted)}
+.lead{font-size:var(--text-lead);color:var(--muted);max-width:52ch;line-height:1.55}
+.eyebrow{display:inline-block;font-size:var(--text-caption);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-600);margin-bottom:var(--s-3)}
+.eyebrow.is-green,.eyebrow.is-navy{color:var(--navy-600)}
+.container{width:min(100% - (var(--gutter) * 2),var(--container));margin-inline:auto}
+.skip-link{position:absolute;left:-999px;top:0;background:var(--navy-800);color:#fff;padding:.75rem 1rem;z-index:100}
+.skip-link:focus{left:var(--gutter);top:var(--gutter)}
+:focus-visible{outline:2px solid var(--gold-500);outline-offset:3px}

@@ -1,0 +1,186 @@
+/* Registration page — ZBIF design language + 3-step content */
+.reg-page{min-height:100vh;background:linear-gradient(180deg,var(--navy-50) 0,var(--bg) 28%);padding-bottom:3rem}
+.reg-top{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:1rem clamp(1rem,4vw,2.5rem);border-bottom:1px solid var(--line);
+  background:rgba(255,255,255,.85);backdrop-filter:blur(10px);position:sticky;top:0;z-index:10;
+}
+.reg-logo{display:inline-flex;background:#000;border-radius:10px;padding:5px 9px;border:1px solid rgba(212,175,55,.35);line-height:0}
+.reg-logo img{height:36px;width:auto}
+.reg-top-actions{display:flex;align-items:center;gap:.65rem}
+
+.reg-layout{
+  max-width:720px;margin:0 auto;padding:1.75rem clamp(1rem,4vw,1.75rem) 3rem;
+}
+.reg-main{min-width:0;width:100%}
+.reg-intro{margin:0 auto 1.35rem;text-align:center;max-width:38rem}
+.reg-intro h1{font-size:clamp(1.65rem,2.8vw,2.15rem);margin:0 0 .5rem;color:var(--navy-900);letter-spacing:-.02em;line-height:1.2}
+.reg-intro .lead{margin:0 auto;color:var(--muted);font-size:1.02rem;line-height:1.5;max-width:36rem}
+.reg-persona-2{margin:0 auto 1.25rem}
+.reg-card{padding:1.35rem 1.4rem 1.45rem;width:100%}
+.reg-actions{justify-content:space-between}
+
+.reg-progress{
+  list-style:none;margin:0 auto 1.35rem;padding:0;
+  display:flex;align-items:flex-start;justify-content:center;gap:0;max-width:420px;width:100%;
+}
+.reg-progress li{
+  position:relative;flex:1;display:flex;flex-direction:column;align-items:center;gap:.4rem;
+  padding:0;border:0;background:transparent;color:var(--muted);font-size:.78rem;font-weight:600;
+  text-align:center;min-width:0;
+}
+.reg-progress li:not(:last-child)::after{
+  content:"";position:absolute;top:.7rem;left:calc(50% + 1rem);right:calc(-50% + 1rem);
+  height:2px;background:rgba(15,28,48,.12);z-index:0;
+}
+.reg-progress li.is-done:not(:last-child)::after,
+.reg-progress li.is-active:not(:last-child)::after{background:rgba(47,158,107,.45)}
+.reg-progress-num{
+  position:relative;z-index:1;width:1.55rem;height:1.55rem;border-radius:50%;
+  display:grid;place-items:center;background:#fff;border:2px solid rgba(15,28,48,.15);
+  font-size:.75rem;color:var(--muted);font-weight:700;
+}
+.reg-progress li.is-active{color:var(--navy-900)}
+.reg-progress li.is-active .reg-progress-num{background:var(--gold-500);border-color:var(--gold-500);color:#fff}
+.reg-progress li.is-done{color:var(--navy-800)}
+.reg-progress li.is-done .reg-progress-num{background:#2F9E6B;border-color:#2F9E6B;color:#fff}
+.reg-progress-label{line-height:1.2}
+.reg-persona-2{grid-template-columns:repeat(2,minmax(0,1fr));margin:0 auto 1.25rem;max-width:100%}
+.reg-persona-2 .persona-card{min-height:110px;background:#fff;text-align:center;padding:1.05rem .85rem}
+.reg-persona-2 .persona-card .persona-ico{
+  display:grid;place-items:center;width:2rem;height:2rem;margin:0 auto .45rem;
+  border-radius:999px;background:var(--navy-50);color:var(--muted);font-size:.95rem;
+}
+.reg-persona-2 .persona-card.is-selected{
+  border-color:var(--gold-500);background:rgba(212,175,55,.06);box-shadow:0 0 0 1px var(--gold-500);
+}
+.reg-persona-2 .persona-card.is-selected .persona-ico{background:rgba(212,175,55,.18);color:var(--gold-700,#A8891E)}
+.reg-persona-2 .persona-card strong{display:block;margin-bottom:.3rem}
+.reg-persona-2 .persona-card span{display:block}
+
+.reg-card{
+  background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-sm);
+  padding:1.35rem 1.4rem 1.5rem;
+}
+.reg-card h2{margin:0 0 .35rem;font-size:1.25rem;color:var(--navy-900)}
+.wizard-panel{display:none}
+.wizard-panel.active{display:block}
+.field-hint{margin:.25rem 0 0;font-size:.82rem;color:var(--muted)}
+.field-error{margin:.35rem 0 0;font-size:.82rem;color:#B23A3A;font-weight:600}
+
+.reg-logo-row{display:flex;align-items:center;gap:1rem;margin-top:.55rem}
+.reg-logo-preview{
+  width:64px;height:64px;border-radius:14px;display:grid;place-items:center;overflow:hidden;
+  background:linear-gradient(145deg,var(--navy-800),var(--navy-950));color:var(--gold-500);
+  font-weight:700;font-size:1.05rem;border:1px solid rgba(212,175,55,.35);
+  background-size:cover;background-position:center;
+}
+
+.reg-contacts-head{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;
+  margin:1.35rem 0 .85rem;padding-top:1rem;border-top:1px solid var(--line);
+}
+.reg-contacts-head h3{margin:0 0 .2rem;font-size:1rem;color:var(--navy-900)}
+.reg-contact{
+  background:var(--bg);border:1px solid var(--line);border-radius:14px;
+  padding:1rem 1.05rem;margin-bottom:.75rem;
+}
+.reg-contact-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem}
+.reg-contact-top strong{font-size:.9rem;color:var(--navy-800)}
+.reg-contact-remove{
+  border:0;background:transparent;color:#B23A3A;font:inherit;font-size:.82rem;font-weight:600;cursor:pointer;
+}
+
+.reg-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.45rem}
+.reg-chip{
+  display:inline-flex;align-items:center;padding:.45rem .8rem;border-radius:999px;cursor:pointer;
+  border:1px solid var(--line);background:#fff;font-size:.84rem;font-weight:600;color:var(--navy-800);
+  transition:border-color .15s ease,background .15s ease;
+}
+.reg-chip input{position:absolute;opacity:0;pointer-events:none}
+.reg-chip:hover{border-color:var(--navy-600)}
+.reg-chip.is-on{border-color:var(--navy-800);background:var(--navy-50);color:var(--navy-900)}
+
+.reg-actions{
+  display:flex;gap:.65rem;flex-wrap:wrap;justify-content:space-between;align-items:center;
+  margin-top:1.35rem;padding-top:1rem;border-top:1px solid var(--line);
+}
+.reg-consents{
+  display:grid;gap:.4rem;margin:1rem 0 0;justify-items:start;text-align:left;width:100%;
+}
+.reg-check{
+  display:inline-flex;align-items:center;gap:.4rem;margin:0;padding:0;
+  font-size:.82rem;font-weight:500;color:var(--muted);line-height:1.35;cursor:pointer;
+  width:auto;max-width:100%;
+}
+.reg-check input[type="checkbox"]{
+  width:14px;height:14px;min-width:14px;max-width:14px;margin:0;padding:0;
+  accent-color:var(--navy-800);flex-shrink:0;cursor:pointer;
+  transform:scale(1);appearance:auto;
+}
+.reg-check span{text-align:left}
+.reg-check-grid{display:grid;gap:.4rem;margin:1rem 0;justify-items:start}
+.reg-check-grid label{
+  display:inline-flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--muted);font-weight:500;
+}
+.reg-check-grid input[type="checkbox"]{
+  width:14px;height:14px;min-width:14px;margin:0;accent-color:var(--navy-800);flex-shrink:0;
+}
+.reg-card [hidden]{display:none!important}
+.reg-whatsapp{
+  display:inline-flex;align-items:center;gap:.4rem;margin:.4rem 0 0;
+  font-size:.78rem;font-weight:500;color:var(--muted);line-height:1.3;cursor:pointer;
+}
+.reg-whatsapp input[type="checkbox"]{
+  width:14px;height:14px;min-width:14px;margin:0;padding:0;
+  accent-color:var(--navy-800);flex-shrink:0;cursor:pointer;
+}
+.reg-wa-ico{
+  display:inline-flex;align-items:center;justify-content:center;
+  color:#25D366;flex-shrink:0;line-height:0;
+}
+.reg-whatsapp span{white-space:normal}
+@media (min-width:640px){
+  .reg-whatsapp span{white-space:nowrap}
+}
+
+.persona-grid{display:grid;gap:.75rem}
+.persona-card{
+  position:relative;border:1px solid var(--line);border-radius:14px;padding:1rem .9rem;cursor:pointer;
+  background:var(--bg);transition:border-color var(--t-fast) var(--ease),box-shadow var(--t-fast) var(--ease),transform var(--t-fast) var(--ease);
+  min-height:104px;
+}
+.persona-card:hover{border-color:var(--navy-600);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.persona-card input{position:absolute;opacity:0;pointer-events:none}
+.persona-card strong{display:block;font-size:.95rem;margin-bottom:.3rem;color:var(--navy-900)}
+.persona-card span{font-size:.8rem;color:var(--muted);line-height:1.35}
+
+/* Nova styles live in components.css (shared). */
+.chat-launcher,.chat-panel{display:none!important}
+
+@media (max-width:640px){
+  .reg-persona-2{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .reg-progress-label{font-size:.7rem}
+  .otp-inputs{gap:.35rem}
+  .otp-inputs input{width:2.4rem;height:2.75rem;font-size:1.1rem}
+}
+
+/* Email OTP verification (centered, same shell as register) */
+.verify-page .reg-layout{max-width:480px;padding-top:2rem}
+.verify-card{text-align:center}
+.verify-card .otp-inputs{justify-content:center;margin:1.25rem 0 .5rem}
+.verify-card .otp-inputs input{
+  width:2.75rem;height:3rem;text-align:center;font-size:1.25rem;font-weight:700;
+  border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--navy-900);
+}
+.verify-card .otp-inputs input:focus{
+  outline:none;border-color:var(--gold-500);box-shadow:0 0 0 3px rgba(212,175,55,.2);
+}
+.verify-hint{margin:0 0 1.15rem;text-align:center}
+.verify-resend{margin-top:.75rem}
+.verify-result h2{margin:0 0 .5rem}
+.verify-result .muted{margin:0 0 1.25rem;line-height:1.5}
+.verify-result .btn-block + .btn-block{margin-top:.5rem}
+
