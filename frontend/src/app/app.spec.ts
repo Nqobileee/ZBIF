@@ -17,10 +17,10 @@ describe('App', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render the header wordmark', async () => {
+  it('should host a router outlet', () => {
     const fixture = TestBed.createComponent(App);
-    await fixture.whenStable();
+    fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('header')?.textContent).toContain('ZBIF');
+    expect(compiled.querySelector('router-outlet')).toBeTruthy();
   });
 });
