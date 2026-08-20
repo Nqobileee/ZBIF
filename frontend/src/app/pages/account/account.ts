@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/auth/auth.service';
+import { Button } from '../../shared/ui/button/button';
 
 @Component({
   selector: 'app-account',
-  imports: [],
+  imports: [Button],
   templateUrl: './account.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

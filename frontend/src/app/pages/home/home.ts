@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { Button } from '../../shared/ui/button/button';
 
 interface ProcessStep {
   n: string;
@@ -35,7 +36,7 @@ const FORUM_START = new Date('2026-10-19T00:00:00+02:00');
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink],
+  imports: [RouterLink, Button],
   templateUrl: './home.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

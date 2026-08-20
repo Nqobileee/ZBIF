@@ -34,13 +34,7 @@
       <p class="rounded-md border border-red-200 bg-red-50 px-3.5 py-2.5 text-sm text-red-700">{{ message }}</p>
     }
 
-    <button
-      type="submit"
-      [disabled]="submitting()"
-      class="rounded-full bg-(--color-teal) px-6 py-3 text-sm font-semibold text-(--color-surface) transition hover:opacity-90 disabled:opacity-60"
-    >
-      {{ submitting() ? 'Signing in…' : 'Sign in' }}
-    </button>
+    <app-button type="submit" variant="secondary" [loading]="submitting()" [fullWidth]="true">Sign in</app-button>
   </form>
 
   <p class="mt-6 text-sm text-(--color-muted)">

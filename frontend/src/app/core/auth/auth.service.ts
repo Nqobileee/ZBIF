@@ -15,8 +15,14 @@ export class AuthService {
   readonly currentUser = this.currentUserSignal.asReadonly();
   readonly isAuthenticated = computed(() => this.currentUserSignal() !== null);
 
-  register(request: RegisterRequest): Observable<UserProfile> {
-    return this.http.post<UserProfile>(`${this.baseUrl}/register`, request);
+  register(request: RegisterRequest, logo?: File | null): Observable<UserProfile> {
+    const formData = new FormData();
+    formData.append('request', new Blob([JSON.stringify(request)], { type: 'application/json' }));
+    if (logo) {
+      formData.append('logo', logo, logo.name);
+    }
+    // No explicit Content-Type: the browser sets multipart/form-data with the right boundary.
+    return this.http.post<UserProfile>(`${this.baseUrl}/register`, formData);
   }
 
   login(email: string, password: string): Observable<AuthTokens> {

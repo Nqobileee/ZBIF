@@ -25,17 +25,11 @@
     </p>
 
     <div class="mt-9 flex flex-wrap gap-3">
-      <a
-        routerLink="/register"
-        [queryParams]="{ type: 'innovator' }"
-        class="rounded-full bg-(--color-brass) px-6 py-3 text-sm font-bold text-white transition hover:opacity-90"
-        >Register as innovator</a
+      <app-button routerLink="/register" [queryParams]="{ type: 'innovator' }" size="lg"
+        >Register as innovator</app-button
       >
-      <a
-        routerLink="/register"
-        [queryParams]="{ type: 'organisation' }"
-        class="glass-dark rounded-full px-6 py-3 text-sm font-bold text-white transition hover:bg-white/15"
-        >Register organisation</a
+      <app-button routerLink="/register" [queryParams]="{ type: 'organisation' }" variant="glass" size="lg"
+        >Register organisation</app-button
       >
     </div>
 
@@ -224,10 +218,6 @@
         Submit a real business challenge, register as an innovator, or sponsor an innovation initiative.
       </p>
     </div>
-    <a
-      routerLink="/register"
-      class="shrink-0 rounded-full bg-(--color-brass) px-6 py-3 text-sm font-bold text-white transition hover:opacity-90"
-      >Get started</a
-    >
+    <app-button routerLink="/register" size="lg" class="shrink-0">Get started</app-button>
   </div>
 </section>

@@ -4,7 +4,8 @@
   </p>
   <h1 class="mt-3 text-3xl font-bold tracking-tight text-(--color-ink)">Create your account</h1>
   <p class="mt-2 text-sm text-(--color-muted)">
-    Register as an individual innovator, or register your organisation to submit a challenge.
+    Register as an individual innovator, or register your organisation to submit a challenge or showcase
+    what you build.
   </p>
 
   @if (registeredEmail(); as email) {
@@ -20,79 +21,198 @@
       >
     </div>
   } @else {
-    <form class="mt-8 flex flex-col gap-5" [formGroup]="form" (ngSubmit)="submit()">
-      <div>
-        <label for="fullName" class="block text-sm font-medium text-(--color-ink)">Full name</label>
-        <input
-          id="fullName"
-          type="text"
-          formControlName="fullName"
-          autocomplete="name"
-          class="mt-1.5 w-full rounded-md border border-(--color-rule) bg-(--color-surface) px-3.5 py-2.5 text-sm text-(--color-ink) outline-none focus:border-(--color-teal)"
-        />
-        @if (form.controls.fullName.invalid && form.controls.fullName.touched) {
-          <p class="mt-1 text-xs text-red-600">Your name is required.</p>
-        }
-      </div>
+    @if (registeringOrganisation()) {
+      <ol class="mt-8 flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-(--color-muted)">
+        <li [class.text-(--color-teal)]="step() === 1">1. Account &amp; organisation</li>
+        <li aria-hidden="true">&rarr;</li>
+        <li [class.text-(--color-teal)]="step() === 2">2. Your capabilities</li>
+      </ol>
+    }
 
-      <div>
-        <label for="email" class="block text-sm font-medium text-(--color-ink)">Email</label>
-        <input
-          id="email"
-          type="email"
-          formControlName="email"
-          autocomplete="email"
-          class="mt-1.5 w-full rounded-md border border-(--color-rule) bg-(--color-surface) px-3.5 py-2.5 text-sm text-(--color-ink) outline-none focus:border-(--color-teal)"
-        />
-        @if (form.controls.email.invalid && form.controls.email.touched) {
-          <p class="mt-1 text-xs text-red-600">Enter a valid email address.</p>
-        }
-      </div>
-
-      <div>
-        <label for="password" class="block text-sm font-medium text-(--color-ink)">Password</label>
-        <input
-          id="password"
-          type="password"
-          formControlName="password"
-          autocomplete="new-password"
-          class="mt-1.5 w-full rounded-md border border-(--color-rule) bg-(--color-surface) px-3.5 py-2.5 text-sm text-(--color-ink) outline-none focus:border-(--color-teal)"
-        />
-        @if (form.controls.password.invalid && form.controls.password.touched) {
-          <p class="mt-1 text-xs text-red-600">At least 10 characters.</p>
-        }
-      </div>
-
-      <label class="flex items-center gap-2 text-sm text-(--color-ink)">
-        <input
-          type="checkbox"
-          [checked]="registeringOrganisation()"
-          (change)="toggleOrganisation($any($event.target).checked)"
-          class="h-4 w-4 rounded border-(--color-rule) accent-(--color-teal)"
-        />
-        I'm registering on behalf of an organisation
-      </label>
-
-      @if (registeringOrganisation()) {
+    <form class="mt-6 flex flex-col gap-5" [formGroup]="form" (ngSubmit)="submit()">
+      @if (step() === 1) {
         <div>
-          <label for="organisationName" class="block text-sm font-medium text-(--color-ink)">Organisation name</label>
+          <label for="fullName" class="block text-sm font-medium text-(--color-ink)">Full name</label>
           <input
-            id="organisationName"
+            id="fullName"
             type="text"
-            formControlName="organisationName"
+            formControlName="fullName"
+            autocomplete="name"
             class="mt-1.5 w-full rounded-md border border-(--color-rule) bg-(--color-surface) px-3.5 py-2.5 text-sm text-(--color-ink) outline-none focus:border-(--color-teal)"
           />
+          @if (form.controls.fullName.invalid && form.controls.fullName.touched) {
+            <p class="mt-1 text-xs text-red-600">Your name is required.</p>
+          }
+        </div>
+
+        <label class="flex items-center gap-2 text-sm text-(--color-ink)">
+          <input
+            type="checkbox"
+            [checked]="registeringOrganisation()"
+            (change)="toggleOrganisation($any($event.target).checked)"
+            class="h-4 w-4 rounded border-(--color-rule) accent-(--color-teal)"
+          />
+          I'm registering on behalf of an organisation
+        </label>
+
+        @if (registeringOrganisation()) {
+          <div>
+            <label for="organisationName" class="block text-sm font-medium text-(--color-ink)"
+              >Organisation name *</label
+            >
+            <input
+              id="organisationName"
+              type="text"
+              formControlName="organisationName"
+              class="mt-1.5 w-full rounded-md border border-(--color-rule) bg-(--color-surface) px-3.5 py-2.5 text-sm text-(--color-ink) outline-none focus:border-(--color-teal)"
+            />
+          </div>
+
+          <div>
+            <label for="organisationType" class="block text-sm font-medium text-(--color-ink)"
+              >Organisation type *</label
+            >
+            <select
+              id="organisationType"
+              formControlName="organisationType"
+              class="mt-1.5 w-full rounded-md border border-(--color-rule) bg-(--color-surface) px-3.5 py-2.5 text-sm text-(--color-ink) outline-none focus:border-(--color-teal)"
+            >
+              <option value="" disabled>Select a type</option>
+              @for (option of organisationTypeOptions; track option.value) {
+                <option [value]="option.value">{{ option.label }}</option>
+              }
+            </select>
+          </div>
+        }
+
+        <p class="text-xs font-semibold uppercase tracking-wide text-(--color-muted)">Account credentials</p>
+        <p class="-mt-3 text-xs text-(--color-muted)">You'll use these to sign in to your innovator dashboard.</p>
+
+        <div>
+          <label for="email" class="block text-sm font-medium text-(--color-ink)">Email address *</label>
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            autocomplete="email"
+            placeholder="you@organisation.co.zw"
+            class="mt-1.5 w-full rounded-md border border-(--color-rule) bg-(--color-surface) px-3.5 py-2.5 text-sm text-(--color-ink) outline-none focus:border-(--color-teal)"
+          />
+          @if (form.controls.email.invalid && form.controls.email.touched) {
+            <p class="mt-1 text-xs text-red-600">Enter a valid email address.</p>
+          }
         </div>
 
         <div>
-          <label for="organisationType" class="block text-sm font-medium text-(--color-ink)">Organisation type</label>
+          <label for="password" class="block text-sm font-medium text-(--color-ink)">Password *</label>
+          <input
+            id="password"
+            type="password"
+            formControlName="password"
+            autocomplete="new-password"
+            class="mt-1.5 w-full rounded-md border border-(--color-rule) bg-(--color-surface) px-3.5 py-2.5 text-sm text-(--color-ink) outline-none focus:border-(--color-teal)"
+          />
+          @if (form.controls.password.invalid && form.controls.password.touched) {
+            <p class="mt-1 text-xs text-red-600">At least 10 characters.</p>
+          }
+        </div>
+
+        <div>
+          <label for="confirmPassword" class="block text-sm font-medium text-(--color-ink)">Confirm password *</label>
+          <input
+            id="confirmPassword"
+            type="password"
+            formControlName="confirmPassword"
+            autocomplete="new-password"
+            class="mt-1.5 w-full rounded-md border border-(--color-rule) bg-(--color-surface) px-3.5 py-2.5 text-sm text-(--color-ink) outline-none focus:border-(--color-teal)"
+          />
+          @if (form.hasError('passwordMismatch') && form.controls.confirmPassword.touched) {
+            <p class="mt-1 text-xs text-red-600">Passwords don't match.</p>
+          }
+        </div>
+      }
+
+      @if (step() === 2 && registeringOrganisation()) {
+        <div>
+          <span class="block text-sm font-medium text-(--color-ink)">Logo</span>
+          <div class="mt-1.5 flex items-center gap-4">
+            @if (logoPreviewUrl(); as preview) {
+              <img [src]="preview" alt="" class="h-14 w-14 rounded-md border border-(--color-rule) object-cover" />
+            } @else {
+              <span
+                class="flex h-14 w-14 items-center justify-center rounded-md border border-dashed border-(--color-rule) text-xs text-(--color-muted)"
+                >No logo</span
+              >
+            }
+            <div class="flex flex-col gap-1">
+              <input
+                id="logo"
+                type="file"
+                accept="image/png,image/jpeg,image/webp,image/svg+xml"
+                (change)="onLogoSelected($event)"
+                class="text-sm text-(--color-ink) file:mr-3 file:rounded-sm file:border-0 file:bg-(--color-teal-soft) file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-(--color-teal)"
+              />
+              <span class="text-xs text-(--color-muted)">PNG, JPEG, WEBP or SVG, up to 2MB.</span>
+            </div>
+          </div>
+          @if (logoError(); as message) {
+            <p class="mt-1 text-xs text-red-600">{{ message }}</p>
+          }
+        </div>
+
+        <p class="text-xs font-semibold uppercase tracking-wide text-(--color-muted)">Your capabilities</p>
+
+        <div>
+          <label for="description" class="block text-sm font-medium text-(--color-ink)">What do you build or offer?</label>
+          <textarea
+            id="description"
+            formControlName="description"
+            rows="4"
+            placeholder="Describe your solutions, track record, and the problems you solve."
+            class="mt-1.5 w-full rounded-md border border-(--color-rule) bg-(--color-surface) px-3.5 py-2.5 text-sm text-(--color-ink) outline-none focus:border-(--color-teal)"
+          ></textarea>
+        </div>
+
+        <fieldset>
+          <legend class="text-sm font-medium text-(--color-ink)">Focus areas</legend>
+          <div class="mt-2 grid grid-cols-2 gap-x-3 gap-y-2">
+            @for (option of focusAreaOptions; track option.value) {
+              <label class="flex items-center gap-2 text-sm text-(--color-ink)">
+                <input
+                  type="checkbox"
+                  [checked]="isFocusAreaSelected(option.value)"
+                  (change)="toggleFocusArea(option.value, $any($event.target).checked)"
+                  class="h-4 w-4 rounded border-(--color-rule) accent-(--color-teal)"
+                />
+                {{ option.label }}
+              </label>
+            }
+          </div>
+        </fieldset>
+
+        <div>
+          <label for="stage" class="block text-sm font-medium text-(--color-ink)">Current stage</label>
           <select
-            id="organisationType"
-            formControlName="organisationType"
+            id="stage"
+            formControlName="stage"
             class="mt-1.5 w-full rounded-md border border-(--color-rule) bg-(--color-surface) px-3.5 py-2.5 text-sm text-(--color-ink) outline-none focus:border-(--color-teal)"
           >
-            <option value="" disabled>Select a type</option>
-            @for (option of organisationTypeOptions; track option.value) {
+            <option value="" disabled>Select a stage</option>
+            @for (option of organisationStageOptions; track option.value) {
+              <option [value]="option.value">{{ option.label }}</option>
+            }
+          </select>
+        </div>
+
+        <div>
+          <label for="teamSize" class="block text-sm font-medium text-(--color-ink)">Team size</label>
+          <select
+            id="teamSize"
+            formControlName="teamSize"
+            class="mt-1.5 w-full rounded-md border border-(--color-rule) bg-(--color-surface) px-3.5 py-2.5 text-sm text-(--color-ink) outline-none focus:border-(--color-teal)"
+          >
+            <option value="" disabled>Select a team size</option>
+            @for (option of teamSizeOptions; track option.value) {
               <option [value]="option.value">{{ option.label }}</option>
             }
           </select>
@@ -103,13 +223,20 @@
         <p class="rounded-md border border-red-200 bg-red-50 px-3.5 py-2.5 text-sm text-red-700">{{ message }}</p>
       }
 
-      <button
-        type="submit"
-        [disabled]="submitting()"
-        class="rounded-full bg-(--color-teal) px-6 py-3 text-sm font-semibold text-(--color-surface) transition hover:opacity-90 disabled:opacity-60"
-      >
-        {{ submitting() ? 'Creating account…' : 'Create account' }}
-      </button>
+      <div class="flex gap-3">
+        @if (step() === 2 && registeringOrganisation()) {
+          <app-button type="button" variant="outline" (clicked)="backToDetails()">Back</app-button>
+        }
+        @if (step() === 1 && registeringOrganisation()) {
+          <app-button type="button" variant="secondary" [fullWidth]="true" (clicked)="continueToCapabilities()"
+            >Continue</app-button
+          >
+        } @else {
+          <app-button type="submit" variant="secondary" [loading]="submitting()" [fullWidth]="true"
+            >Create account</app-button
+          >
+        }
+      </div>
     </form>
 
     <p class="mt-6 text-sm text-(--color-muted)">

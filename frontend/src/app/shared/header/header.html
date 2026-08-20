@@ -30,11 +30,7 @@
           >Sign in</a
         >
       }
-      <a
-        routerLink="/register"
-        class="rounded-full bg-(--color-brass) px-4 py-2 text-white transition hover:opacity-90"
-        >Get started &rarr;</a
-      >
+      <app-button routerLink="/register" size="md">Get started &rarr;</app-button>
     </nav>
 
     <button
@@ -66,7 +62,9 @@
           >Sign in</a
         >
       }
-      <a routerLink="/register" class="rounded px-2 py-2 font-bold text-(--color-brass)" (click)="closeMenu()">Get started &rarr;</a>
+      <app-button routerLink="/register" size="md" [fullWidth]="true" (clicked)="closeMenu()" class="mt-1"
+        >Get started &rarr;</app-button
+      >
     </nav>
   }
 </header>

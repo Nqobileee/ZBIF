@@ -4,10 +4,11 @@ import { Router, RouterLink } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from '../../core/auth/auth.service';
 import { ApiProblem } from '../../core/auth/auth.models';
+import { Button } from '../../shared/ui/button/button';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, Button],
   templateUrl: './login.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

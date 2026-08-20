@@ -1,6 +1,8 @@
-<div class="flex min-h-screen flex-col overflow-x-hidden">
+<div class="flex min-h-screen flex-col">
   <app-header />
-  <main class="flex-1">
+  <!-- overflow-x-hidden here, not on the root — an overflow value other than
+       visible on any ancestor of the sticky header breaks position: sticky. -->
+  <main class="flex-1 overflow-x-hidden">
     <router-outlet />
   </main>
   <app-footer />

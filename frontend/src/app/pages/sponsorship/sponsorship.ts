@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Button } from '../../shared/ui/button/button';
 
 interface SponsorshipTier {
   name: string;
@@ -9,7 +9,7 @@ interface SponsorshipTier {
 
 @Component({
   selector: 'app-sponsorship',
-  imports: [RouterLink],
+  imports: [Button],
   templateUrl: './sponsorship.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

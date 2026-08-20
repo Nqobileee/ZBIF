@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Button } from '../../shared/ui/button/button';
 
 interface SubTheme {
   n: string;
@@ -9,7 +9,7 @@ interface SubTheme {
 
 @Component({
   selector: 'app-sub-themes',
-  imports: [RouterLink],
+  imports: [Button],
   templateUrl: './sub-themes.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

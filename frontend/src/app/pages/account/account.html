@@ -59,11 +59,5 @@
     <p class="mt-6 text-(--color-muted)">Loading your account…</p>
   }
 
-  <button
-    type="button"
-    (click)="signOut()"
-    class="mt-8 rounded-full border border-(--color-rule) px-6 py-3 text-sm font-semibold text-(--color-ink) transition hover:border-(--color-teal) hover:text-(--color-teal)"
-  >
-    Sign out
-  </button>
+  <app-button type="button" variant="outline" (clicked)="signOut()" class="mt-8">Sign out</app-button>
 </section>

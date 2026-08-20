@@ -3,12 +3,13 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from '../../core/auth/auth.service';
 import { ApiProblem } from '../../core/auth/auth.models';
+import { Button } from '../../shared/ui/button/button';
 
 type VerifyState = 'verifying' | 'success' | 'error';
 
 @Component({
   selector: 'app-verify-email',
-  imports: [RouterLink],
+  imports: [RouterLink, Button],
   templateUrl: './verify-email.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
